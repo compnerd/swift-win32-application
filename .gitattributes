@@ -1,0 +1,6 @@
+.swift-format text eol=lf
+*.exe.manifest text eol=lf
+*.md text eol=lf
+*.plist text eol=lf
+*.swift text eol=lf
+*.yml text eol=lf
