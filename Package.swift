@@ -20,6 +20,16 @@ let Application = Package(
       exclude: [
         "Application.exe.manifest",
         "Info.plist",
+      ],
+      swiftSettings: [
+        // Instruct the compiler to generate the entry point as `wWinMain`
+        // rather than `main` to ensure that the application is correctly
+        // marked as a GUI application (Windows subsystem).  This is done
+        // by the linker based upon the main entry point.  Simply marking
+        // the subsystem is insufficient as the compiler will materialize
+        // the entry point as `main`, resulting in an undefined symbol.
+        .unsafeFlags(["-Xfrontend", "-entry-point-function-name",
+                      "-Xfrontend", "wWinMain"]),
       ]
     ),
     .testTarget(name: "ApplicationTests", dependencies: ["Application"]),
