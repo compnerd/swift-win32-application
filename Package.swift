@@ -31,14 +31,14 @@ let Application = Package(
     .executable(name: "Application", targets: ["Application"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/compnerd/swift-win32.git",
+    .package(name: "SwiftWin32", url: "https://github.com/compnerd/swift-win32.git",
              .branch("main")),
   ],
   targets: [
     .executableTarget(
       name: "Application",
       dependencies: [
-        .product(name: "SwiftWin32", package: "swift-win32"),
+        "SwiftWin32",
       ],
       exclude: [
         "Application.exe.manifest",
